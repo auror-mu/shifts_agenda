@@ -1,0 +1,20 @@
+<div class='container'>
+<h3>Shifts agenda </h3>
+  <div class='items'>
+    <ul>
+      <% @shifts.each do |shift| %>
+        <li>
+          <p><%= link_to shift.start_date.strftime("%d %B %Y"), shift_path(shift)%></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+<%# font-family: "Familjen Grotesk" %>
+<%# color: #267b6f %>
+
+<%# - add and edit workers
+- add and assign shifts
+- consult shifts %>

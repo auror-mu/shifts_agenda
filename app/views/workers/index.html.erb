@@ -1,0 +1,12 @@
+<div class='container'>
+<h3>Workers list</h3>
+  <div class='items'>
+    <ul>
+      <% @workers.each do |worker| %>
+        <li>
+          <p><%= worker.first_name %>, <%= worker.status %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
