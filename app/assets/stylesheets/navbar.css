@@ -26,3 +26,10 @@
  font-weight: bold;
 }
 
+.navbar img {
+  width: 35px;
+  height: auto;
+  margin: 4px;
+  vertical-align: middle;
+  float: left;
+}
