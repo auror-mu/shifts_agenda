@@ -1,0 +1,18 @@
+<div class='container'>
+  <h2>Edit Worker</h2>
+  <div class='form'>
+    <%= form_with(model: @worker, url: worker_path(@worker), method: :patch) do |form| %>
+      <div class="field">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name %>
+      </div>
+      <div class="field">
+        <%= form.label :status %>
+        <%= form.text_field :status %>
+      </div>
+      <div class="action">
+        <%= form.submit "Update Worker", class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
