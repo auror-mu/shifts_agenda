@@ -27,7 +27,7 @@ class WorkersController < ApplicationController
   def update
     @worker = Worker.find(params[:id])
     if @worker.update(worker_params)
-      redirect_to worker_path(@worker), notice: "Worker updated successfully!"
+      redirect_to worker_path(@worker)
     else
       render :edit
     end
@@ -35,7 +35,10 @@ class WorkersController < ApplicationController
 
 
   private
-
+  
+  def set_worker
+    @worker = worker.find(params[:id])
+  end
   def worker_params
     params.require(:worker).permit(:first_name, :status)
   end

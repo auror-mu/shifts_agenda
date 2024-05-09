@@ -7,29 +7,26 @@
     <ul>
       <% @shifts.each do |shift| %>
         <li>
-          <p><%= link_to shift.start_date.strftime("%d %B %Y"), shift_path(shift) %></p>
-        </li>
+           <p><%= link_to shift.start_date ? shift.start_date.strftime("%d %B %Y") : "Date not available", shift_path(shift) %></p>
+         </li>
       <% end %>
     </ul>
   </div>
 </div>
 
 
-<div class='container-form'>
-    <h4>Add a shift</h4>
-    <div class="form">
-      <%= form_with(model: Shift.new, url: shifts_path, method: :post) do |form| %>
-        <div class="field">
-          <%= form.label :user_id, "Worker" %>
-          <%= form.text_field :user_id %>
-        </div>
-        <div class="field">
-          <%= form.label :start_date %>
-          <%= form.text_field :start_date %>
-        </div>
-        <div class="action">
-          <%= form.submit "Add Shift", class: "button" %>
-        </div>
-      <% end %>
-      </div>
+<%= form_with(model: Shift.new, url: shifts_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date %>
+  </div>
+  <div class="field">
+    <%= form.label :user_id, "Worker" %>
+    <%= form.collection_select :user_id, Worker.all, :id, :first_name, prompt: "select worker" %>
+  </div>
+  <div class="action">
+    <%= form.submit "Add Shift", class: "button" %>
+  </div>
+<% end %>
+
     </div>

@@ -1,5 +1,3 @@
-# db/seeds.rb
-
 require 'json'
 Worker.destroy_all
 
