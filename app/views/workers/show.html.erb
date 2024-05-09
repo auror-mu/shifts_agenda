@@ -2,6 +2,9 @@
   <div class='item'>
     <p><%= @worker.first_name %>, <%= @worker.status %></p>
   </div>
-</div>
 
-<%= link_to "Edit Worker", edit_worker_path(@worker) %>
+<div class="button">
+  <%= link_to "Edit Worker", edit_worker_path(@worker) %>
+</div>
+</div>
+  <%= link_to image_tag("back_arrow.png", alt: "Back to Index", class: "back-link", style: "width: 20px; margin:10px;"), workers_path %>

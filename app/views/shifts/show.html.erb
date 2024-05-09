@@ -1,6 +1,7 @@
 <div class='container'>
   <h3>Shift of <%= @shift.start_date.strftime("%d %B %Y") %></h3>
   <div class='items'>
-  <p>Assigned to: <%= @shift.worker.first_name %>, <%= @shift.worker.status %></p>
-  </div>
+<p>Assigned to: <%= link_to "#{ @shift.worker.first_name }, #{ @shift.worker.status }", worker_path(@shift.worker) %></p>
 </div>
+</div>
+<%= link_to image_tag("back_arrow.png", alt: "Back to Index", class: "back-link", style: "width: 20px; margin:10px;"), workers_path %>
