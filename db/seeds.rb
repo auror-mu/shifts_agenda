@@ -12,6 +12,6 @@ parsed_data['workers'].each do |worker|
 end
 
 parsed_data['shifts'].each do |shift|
-  shift.delete('planning_id')  # Remove 'planning_id' attribute from shift data
+  shift.delete('planning_id')
   Shift.create!(shift)
 end

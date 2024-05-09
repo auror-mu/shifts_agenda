@@ -6,7 +6,17 @@ class ShiftsController < ApplicationController
   def show
     @shift = Shift.includes(:worker).find(params[:id])
   end
-  
+
+  def create
+    @shift = Shift.new(shift_params)
+
+    if @shift.save
+      redirect_to @shift
+    else
+      render :new
+    end
+  end
+
 end
 
 private

@@ -1,5 +1,5 @@
 <div class='container'>
-<h3>Shifts agenda </h3>
+<h2>Shifts agenda </h2>
  <div class='legend'>
   click shift for assignments
 </div>
@@ -7,7 +7,7 @@
     <ul>
       <% @shifts.each do |shift| %>
         <li>
-          <p><%= link_to shift.start_date.strftime("%d %B %Y"), shift_path(shift)%></p>
+          <p><%= link_to shift.start_date.strftime("%d %B %Y"), shift_path(shift) %></p>
         </li>
       <% end %>
     </ul>
@@ -15,9 +15,21 @@
 </div>
 
 
-<%# font-family: "Familjen Grotesk" %>
-<%# color: #267b6f %>
-
-<%# - add and edit workers
-- add and assign shifts
-- consult shifts %>
+<div class='container-form'>
+    <h4>Add a shift</h4>
+    <div class="form">
+      <%= form_with(model: Shift.new, url: shifts_path, method: :post) do |form| %>
+        <div class="field">
+          <%= form.label :user_id, "Worker" %>
+          <%= form.text_field :user_id %>
+        </div>
+        <div class="field">
+          <%= form.label :start_date %>
+          <%= form.text_field :start_date %>
+        </div>
+        <div class="action">
+          <%= form.submit "Add Shift", class: "button" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
