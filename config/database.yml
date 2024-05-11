@@ -2,18 +2,18 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV['DB_HOST'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
   database: shifts_agenda_development
+  pool: 50
 
 test:
   <<: *default
-  database: shifts_agenda_test
+  database: "shifts_agenda_test"
 
 production:
   <<: *default
   database: shifts_agenda_production
+  username: shifts_agenda
+  password: <%= ENV['SHIFTS_AGENDA_DATABASE_PASSWORD'] %>
