@@ -14,6 +14,7 @@ class WorkersController < ApplicationController
 
   def create
     @worker = Worker.new(worker_params)
+    
     if @worker.save
       redirect_to workers_path
     else

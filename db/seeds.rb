@@ -3,6 +3,7 @@ require 'date'
 
 Worker.destroy_all
 Shift.destroy_all
+
 data = File.read(Rails.root.join('db', 'data.json'))
 
 parsed_data = JSON.parse(data)

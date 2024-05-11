@@ -14,7 +14,6 @@ class ShiftsController < ApplicationController
   def create
     @shift = Shift.new(shift_params)
 
-    # Check if the associated worker exists
     if Worker.exists?(id: params[:shift][:user_id])
       if @shift.save
         redirect_to @shift
@@ -22,9 +21,7 @@ class ShiftsController < ApplicationController
         render :new, status: :unprocessable_entity
       end
     else
-      # Worker with the specified ID does not exist
-      flash[:error] = "Worker with ID #{params[:shift][:user_id]} not found."
-      render :new, status: :unprocessable_entity
+
     end
   end
 
