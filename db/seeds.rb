@@ -1,5 +1,8 @@
 require 'json'
+require 'date'
+
 Worker.destroy_all
+Shift.destroy_all
 
 data = File.read(Rails.root.join('db', 'data.json'))
 
@@ -11,5 +14,11 @@ end
 
 parsed_data['shifts'].each do |shift|
   shift.delete('planning_id')
-  Shift.create!(shift)
+  worker = Worker.find_by(id: shift['user_id']) # after error while deploying on heroku
+
+  if worker.present?
+    Shift.create!(shift.merge(worker: worker))
+  else
+    puts "Worker with ID #{shift['user_id']} not found."
+  end
 end
