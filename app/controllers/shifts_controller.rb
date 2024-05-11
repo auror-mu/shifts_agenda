@@ -10,13 +10,14 @@ class ShiftsController < ApplicationController
   def new
     @shift = Shift.new
   end
-  
+
   def create
     @shift = Shift.new(shift_params)
+
     if @shift.save
       redirect_to @shift
     else
-      render :new
+      render :new,  status: :unprocessable_entity
     end
   end
 
