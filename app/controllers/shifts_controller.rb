@@ -16,12 +16,10 @@ class ShiftsController < ApplicationController
 
     if Worker.exists?(id: params[:shift][:user_id])
       if @shift.save
-        redirect_to @shift
+        redirect_to shifts_path
       else
-        render :new, status: :unprocessable_entity
+        render :new
       end
-    else
-
     end
   end
 
